@@ -1,6 +1,7 @@
 {
   "debug": true,
   "normalSocketPort": 14774,
+  "udpSocketPort": 8888,
   "websocketPort": 8080,
   "logPath": "./ServerMainLog.log",
   "logFileLevel": "info",
