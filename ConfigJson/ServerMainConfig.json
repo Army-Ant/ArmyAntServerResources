@@ -1,8 +1,10 @@
 {
   "debug": true,
   "normalSocketPort": 14774,
+  "SSLSocketPort": 14779,
   "udpSocketPort": 8888,
   "websocketPort": 8080,
+  "websocketSSLPort":8089,
   "logPath": "./ServerMainLog.log",
   "logFileLevel": "info",
   "logConsoleLevel": "verbose",
