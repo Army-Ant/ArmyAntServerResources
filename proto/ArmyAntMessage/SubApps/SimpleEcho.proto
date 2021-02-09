@@ -52,14 +52,14 @@ message SM2C_EchoBroadcastResponse{
 }
 
 message SM2C_EchoReceiveNotice{
-	option (msg_code) = 10011005;
+	option (msg_code) = 10012005;
 	bool is_broadcast = 1;
 	string from = 2;
 	string message = 3;
 }
 
 message SM2C_EchoError {
-	option (msg_code) = 10011006;
+	option (msg_code) = 10012006;
 	int32 error_code = 1;
 	string message = 2;
 }
