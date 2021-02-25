@@ -1,0 +1,14 @@
+{
+  "debug": true,
+  "normalSocketPort": 14712,
+  "SSLSocketPort": 14722,
+  "udpSocketPort": 14732,
+  "websocketPort": 14742,
+  "websocketSSLPort":14752,
+  "logPath": "./ChatServerLog.log",
+  "logFileLevel": "info",
+  "logConsoleLevel": "verbose",
+  "logTag":"Chat Server",
+  "dbProxyAddr": "127.0.0.1",
+  "dbProxyPort": 14700
+}

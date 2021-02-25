@@ -1,0 +1,14 @@
+{
+  "debug": true,
+  "normalSocketPort": 14711,
+  "SSLSocketPort": 14721,
+  "udpSocketPort": 14731,
+  "websocketPort": 14741,
+  "websocketSSLPort":14751,
+  "logPath": "./GateServerLog.log",
+  "logFileLevel": "info",
+  "logConsoleLevel": "verbose",
+  "logTag":"Gate Server",
+  "dbProxyAddr": "127.0.0.1",
+  "dbProxyPort": 14700
+}

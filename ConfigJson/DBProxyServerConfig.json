@@ -1,11 +1,12 @@
 {
     "debug":true,
-    "port":11510,
-    "logPath":"./DBProxyLog.log",
+    "port":14700,
+    "logPath":"./DBProxyServerLog.log",
     "logFileLevel":"info",
     "logConsoleLevel":"verbose",
+    "logTag":"DB Proxy Server",
     "mysqlServerHost":"127.0.0.1",
-    "mysqlServerPort":"3306",
+    "mysqlServerPort":3306,
     "mysqlDataBase":"ArmyAntDB",
     "mysqlUsername":"aa_server_dbproxy",
     "mysqlPassword":"L05rg05rgP8K"
