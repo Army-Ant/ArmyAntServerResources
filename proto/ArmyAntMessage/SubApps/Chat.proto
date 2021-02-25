@@ -4,62 +4,66 @@ package ArmyAntMessage.SubApps;
 
 import "ArmyAntMessage/Common/base.proto";
 
-message C2SM_EchoLoginRequest{
+// appid : 1001
+
+message CS_EchoLoginRequest{
 	option (msg_code) = 10011001;
 	string user_name = 1;
 }
 
-message SM2C_EchoLoginResponse{
-	option (msg_code) = 10012001;
+message SC_EchoLoginResponse{
+	option (msg_code) = 10011002;
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
 }
 
-message C2SM_EchoLogoutRequest{
-	option (msg_code) = 10011002;
+message CS_EchoLogoutRequest{
+	option (msg_code) = 10011011;
 	string user_name = 1;
 }
 
-message SM2C_EchoLogoutResponse{
-	option (msg_code) = 10012002;
+message SC_EchoLogoutResponse{
+	option (msg_code) = 10011012;
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
 }
 
-message C2SM_EchoSendRequest{
-	option (msg_code) = 10011003;
+message CS_EchoSendRequest{
+	option (msg_code) = 10011021;
 	string target = 1;
 	string message = 2;
 }
 
-message SM2C_EchoSendResponse{
-	option (msg_code) = 10012003;
+message SC_EchoSendResponse{
+	option (msg_code) = 10011022;
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
-	C2SM_EchoSendRequest request = 3;
+	CS_EchoSendRequest request = 3;
 }
 
-message C2SM_EchoBroadcastRequest{
-	option (msg_code) = 10011004;
+message CS_EchoBroadcastRequest{
+	option (msg_code) = 10011031;
 	string message = 1;
 }
 
-message SM2C_EchoBroadcastResponse{
-	option (msg_code) = 10012004;
+message SC_EchoBroadcastResponse{
+	option (msg_code) = 10011032;
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
-	C2SM_EchoBroadcastRequest request = 3;
+	CS_EchoBroadcastRequest request = 3;
 }
 
-message SM2C_EchoReceiveNotice{
-	option (msg_code) = 10012005;
+////////// Notices ////////////////////////////////////////
+
+message SC_EchoReceiveNotice{
+	option (msg_code) = 10010001;
 	bool is_broadcast = 1;
 	string from = 2;
 	string message = 3;
 }
 
-message SM2C_EchoError {
-	option (msg_code) = 10012006;
+message SC_EchoError {
+	option (msg_code) = 10010002;
 	int32 error_code = 1;
 	string message = 2;
 }

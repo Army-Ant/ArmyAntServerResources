@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package ArmyAntMessage.SubApps;
+
+import "ArmyAntMessage/Common/base.proto";
+
+// appid : 1000
+
+
+// 正常用户登录
+message CS_GateLoginRequest{
+	option (msg_code) = 10001001;
+	string uid = 1;
+	string pwd = 2;
+	int32 server_id = 3;
+}
+
+
+// 正常用户登录成功
+message SC_GateLoginResponse{
+	option (msg_code) = 10001002;
+	string auth = 1;
+	int64 out_time = 2;
+	string server_addr = 3;
+	NetworkType allow_network = 4;
+	MessageType allow_message = 5;
+}
+
+
+// 正常用户登录失败
+message SC_GateLoginFailureResponse{
+	option (msg_code) = 10001003;
+	int32 code = 1;
+	string message = 2;
+}
+
+
+// 正常用户登出
+message CS_GateLogoutRequest{
+	option (msg_code) = 10001011;
+	string uid = 1;		// 如不填， 则按照 auth 对应的账号登出， 可用于无 uid 的游客账号。
+	string auth = 2;	// 如不填， 则按照 uid 登出。 如 auth 与 uid 不符或全都不填， 则登出失败。
+	int32 server_id = 3;	// 如不填， 则登出所有服务器上的指定用户
+}
+
+
+// 正常用户登出成功, 也可用于被动登出的通知
+// Gate 服务器不会主动断开正常用户的连接， 此协议仅用于通知用户已登出
+message SC_GateLogoutResponse{
+	option (msg_code) = 10001012;
+	string uid = 1;
+	repeated int32 server_id = 2;
+	int32 code = 3;
+	string message = 4;
+}
+
+
+// 正常用户主动登出失败
+message SC_GateLogoutFailureResponse{
+	option (msg_code) = 10001013;
+	int32 code = 1;
+	string message = 2;
+}
+
+
+// 查询自己的登录状态
+message CS_GateLogStateRequest{
+	option (msg_code) = 10001021;
+	string uid = 1;		// 限定用户，如填可查询指定用户在所有地点的登录状态；
+	string auth = 2;	// 限定auth，如填可查询指定auth在所有地点的登录状态；如 auth 与 uid 不符或全都不填， 则查询失败。
+	int32 server_id = 3;	// 限定服务器如不填， 则检索所有服务器上的登录状态
+}
+
+
+// 通知自己的登录状态
+message SC_GateLogStateResponse{
+	option (msg_code) = 10001022;
+	string uid = 1;
+	repeated int32 server_id = 2;
+}
+
+
+// 查询自己的登录状态失败
+message SC_GateLogStateFailureResponse{
+	option (msg_code) = 10001023;
+	int32 code = 1;
+	string message = 2;
+}
+
+
+// 清除指定用户的全部 auth
+message CS_GateClearAuthRequest{
+	option (msg_code) = 10001031;
+	int32 server_id = 3;	// 如不填， 则检索所有服务器上的登录状态
+}
+
+
+// 清除指定用户的全部 auth 成功，此操作的成功会导致该用户在所有服务器立刻 logout
+message SC_GateClearAuthResponse{
+	option (msg_code) = 10001032;
+	string uid = 1;
+}
+
+
+// 清除指定用户的全部 auth 失败
+message SC_GateClearAuthFailureResponse{
+	option (msg_code) = 10001033;
+	int32 code = 1;
+	string message = 2;
+}
+

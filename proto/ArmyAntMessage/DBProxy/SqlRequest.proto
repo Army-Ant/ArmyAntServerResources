@@ -4,6 +4,8 @@ package ArmyAntMessage.DBProxy;
 
 import "ArmyAntMessage/Common/base.proto";
 
+// appid : 2
+
 ////////// Login User Authorication Checking ////////////
 
 message Any2Dbp_LoginRequest{
@@ -14,14 +16,14 @@ message Any2Dbp_LoginRequest{
 }
 
 message Dbp2Any_LoginResponseSuccessful {
-	option (msg_code) = 22001;
+	option (msg_code) = 21002;
 	string auth_string = 1;
 	int64 current_time = 2;
 	int64 end_time = 3;
 }
 
 message Dbp2Any_LoginResponseFailure {
-	option (msg_code) = 22002;
+	option (msg_code) = 21003;
 	int32 code = 1;
 	string message = 2;
 }
@@ -32,7 +34,7 @@ message Any2Dbp_LogoutRequest {
 }
 
 message Dbp2Any_LogoutResponse {
-	option (msg_code) = 22011;
+	option (msg_code) = 21012;
 	bool result = 1;
 	string message = 2;
 }
@@ -40,7 +42,7 @@ message Dbp2Any_LogoutResponse {
 ////////// Message Inner Structures /////////////////////
 
 message SqlHeadOne {
-	option (msg_code) = 20101;
+	option (msg_code) = 20001;
 	int32 length = 1;
 	string catalog_name = 2;
 	string column_name = 3;
@@ -50,12 +52,12 @@ message SqlHeadOne {
 }
 
 message SqlRow {
-	option (msg_code) = 20102;
+	option (msg_code) = 20002;
 	repeated string fields = 1;
 }
 
 message SqlDatabaseInfo{
-	option (msg_code) = 20103;
+	option (msg_code) = 20003;
 	string name = 1;
 	string server = 2;
 	string charset = 3;
@@ -63,19 +65,19 @@ message SqlDatabaseInfo{
 }
 
 message SqlTableInfo{
-	option (msg_code) = 20104;
+	option (msg_code) = 20004;
 	string table_name = 5;
 	string engine = 6;
 	string comment = 7;
 }
 
 message SqlColumnInfo{
-	option (msg_code) = 20105;
+	option (msg_code) = 20005;
 	
 }
 
 message SqlResult{
-	option (msg_code) = 20106;
+	option (msg_code) = 20006;
 	SqlTableInfo table = 1;
 	repeated SqlHeadOne heads = 2;
 	repeated SqlRow	rows = 3;

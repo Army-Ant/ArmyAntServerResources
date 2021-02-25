@@ -2,32 +2,34 @@
 // Please set this file into the root of protobuffer compiled javascript directory
 
 const message_list = {
-    ["proto.ArmyAntMessage.System.SocketExtendNormal_V0_0_0_1"]: 1,
+    ["proto.ArmyAntMessage.System.SocketHeadExtend"]: 1,
 
-    ["proto.ArmyAntMessage.System.C2SM_GetServerStatueRequest"]: 11001,
-    ["proto.ArmyAntMessage.System.SM2C_GetServerStatueResponse"]: 12001,
+    ["proto.ArmyAntMessage.System.CS_GetServerStatueRequest"]: 11001,
+    ["proto.ArmyAntMessage.System.SC_GetServerStatueResponse"]: 12001,
 
-    ["proto.ArmyAntMessage.SubApps.C2SM_EchoLoginRequest"]: 10011001,
-    ["proto.ArmyAntMessage.SubApps.SM2C_EchoLoginResponse"]: 10012001,
-    ["proto.ArmyAntMessage.SubApps.C2SM_EchoLogoutRequest"]: 10011002,
-    ["proto.ArmyAntMessage.SubApps.SM2C_EchoLogoutResponse"]: 10012002,
-    ["proto.ArmyAntMessage.SubApps.C2SM_EchoSendRequest"]: 10011003,
-    ["proto.ArmyAntMessage.SubApps.SM2C_EchoSendResponse"]: 10012003,
-    ["proto.ArmyAntMessage.SubApps.C2SM_EchoBroadcastRequest"]: 10011004,
-    ["proto.ArmyAntMessage.SubApps.SM2C_EchoBroadcastResponse"]: 10012004,
-    ["proto.ArmyAntMessage.SubApps.SM2C_EchoReceiveNotice"]: 10011005,
-    ["proto.ArmyAntMessage.SubApps.SM2C_EchoError"]: 10011006,
+    ["proto.ArmyAntMessage.SubApps.CS_EchoLoginRequest"]: 10011001,
+    ["proto.ArmyAntMessage.SubApps.SC_EchoLoginResponse"]: 10011002,
+    ["proto.ArmyAntMessage.SubApps.CS_EchoLogoutRequest"]: 10011011,
+    ["proto.ArmyAntMessage.SubApps.SC_EchoLogoutResponse"]: 10011012,
+    ["proto.ArmyAntMessage.SubApps.CS_EchoSendRequest"]: 10011021,
+    ["proto.ArmyAntMessage.SubApps.SC_EchoSendResponse"]: 10011022,
+    ["proto.ArmyAntMessage.SubApps.CS_EchoBroadcastRequest"]: 10011031,
+    ["proto.ArmyAntMessage.SubApps.SC_EchoBroadcastResponse"]: 10011032,
+    ["proto.ArmyAntMessage.SubApps.SC_EchoReceiveNotice"]: 10010001,
+    ["proto.ArmyAntMessage.SubApps.SC_EchoError"]: 10010002,
 
-    ["proto.ArmyAntMessage.SubApps.C2SM_HuolongLoginRequest"]: 10101001,
-    ["proto.ArmyAntMessage.SubApps.SM2C_HuolongLoginResponse"]: 10102001,
-    ["proto.ArmyAntMessage.SubApps.C2SM_HuolongLogoutRequest"]: 10101002,
-    ["proto.ArmyAntMessage.SubApps.SM2C_HuolongLogoutResponse"]: 10102002,
-    ["proto.ArmyAntMessage.SubApps.C2SM_HuolongCreateTableRequest"]: 10101011,
-    ["proto.ArmyAntMessage.SubApps.SM2C_HuolongCreateTableResponse"]: 10102011,
-    ["proto.ArmyAntMessage.SubApps.C2SM_HuolongEnterTableRequest"]: 10101012,
-    ["proto.ArmyAntMessage.SubApps.SM2C_HuolongEnterTableResponse"]: 10102012,
-    ["proto.ArmyAntMessage.SubApps.SM2C_HuolongNoticeRoomInfo"]: 10101013,
-    ["proto.ArmyAntMessage.SubApps.SM2C_HuolongNoticeGameStart"]: 10101014,
+    ["proto.ArmyAntMessage.SubApps.CS_HuolongLoginRequest"]: 10101001,
+    ["proto.ArmyAntMessage.SubApps.SC_HuolongLoginResponse"]: 10101002,
+    ["proto.ArmyAntMessage.SubApps.CS_HuolongLogoutRequest"]: 10101011,
+    ["proto.ArmyAntMessage.SubApps.SC_HuolongLogoutResponse"]: 10101012,
+    ["proto.ArmyAntMessage.SubApps.CS_HuolongChangeUserInfoRequest"]: 10101021,
+    ["proto.ArmyAntMessage.SubApps.SC_HuolongChangeUserInfoResponse"]: 10101022,
+    ["proto.ArmyAntMessage.SubApps.CS_HuolongCreateTableRequest"]: 10101101,
+    ["proto.ArmyAntMessage.SubApps.SC_HuolongCreateTableResponse"]: 10101102,
+    ["proto.ArmyAntMessage.SubApps.CS_HuolongEnterTableRequest"]: 10101111,
+    ["proto.ArmyAntMessage.SubApps.SC_HuolongEnterTableResponse"]: 10101112,
+    ["proto.ArmyAntMessage.SubApps.SC_HuolongNoticeRoomInfo"]: 10100001,
+    ["proto.ArmyAntMessage.SubApps.SC_HuolongNoticeGameStart"]: 10100002,
 }
 
 const protoMessageCodeHelper = {
@@ -38,7 +40,7 @@ const protoMessageCodeHelper = {
         let displayName = ""
         if (typeof message == "string") {
             displayName = message
-        } else if (typeof message == "object") {	//  «œ˚œ¢ÃÂ
+        } else if (typeof message == "object") {	// ÊòØÊ∂àÊÅØ‰Ωì
             let property = Object.getPrototypeOf(message);
             displayName = property.displayName;
             if (!displayName && property.constructor) {
@@ -46,7 +48,7 @@ const protoMessageCodeHelper = {
             }
         } else if (typeof message.prototype == 'undefined' || !message.prototype) {
             return -3;
-        } else {	//  «œ˚œ¢‘≠–Õ
+        } else {	// ÊòØÊ∂àÊÅØÂéüÂûã
             displayName = message.prototype.displayName;
             if (!displayName && message.prototype.constructor) {
                 displayName = message.prototype.constructor.displayName;

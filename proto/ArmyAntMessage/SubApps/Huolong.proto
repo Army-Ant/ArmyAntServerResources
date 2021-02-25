@@ -4,6 +4,8 @@ package ArmyAntMessage.SubApps;
 
 import "ArmyAntMessage/Common/base.proto";
 
+// appid : 1010
+
 enum HuolongGameType {
 	Huolong = 0;
 	Doudizhu = 1;
@@ -23,7 +25,7 @@ enum HuolongStatus {
 //////////////// Account ///////////////////////////////////
 
 // Login
-message C2SM_HuolongLoginRequest{
+message CS_HuolongLoginRequest{
 	option (msg_code) = 10101001;
 	LoginType type = 1;
 	string user_id = 2;
@@ -32,8 +34,8 @@ message C2SM_HuolongLoginRequest{
 	string auto_login_auth = 5;
 }
 
-message SM2C_HuolongLoginResponse{
-	option (msg_code) = 10102001;
+message SC_HuolongLoginResponse{
+	option (msg_code) = 10101002;
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
 	string auto_login_auth = 3;
@@ -41,13 +43,13 @@ message SM2C_HuolongLoginResponse{
 }
 
 // Logout
-message C2SM_HuolongLogoutRequest{
-	option (msg_code) = 10101002;
+message CS_HuolongLogoutRequest{
+	option (msg_code) = 10101011;
 	string auto_login_auth = 1;
 }
 
-message SM2C_HuolongLogoutResponse{
-	option (msg_code) = 10102002;
+message SC_HuolongLogoutResponse{
+	option (msg_code) = 10101012;
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
 }
@@ -60,15 +62,15 @@ message ST_HuolongPlayerInfo {
 	string avatar_url = 3;
 }
 
-message C2SM_HuolongChangeUserInfoRequest{
-	option (msg_code) = 10101003;
+message CS_HuolongChangeUserInfoRequest{
+	option (msg_code) = 10101021;
 	string user_uid = 1;
 	string nick_name = 2;
 	string avatar_url = 3;
 }
 
-message SM2C_HuolongChangeUserInfoResponse{
-	option (msg_code) = 10102003;
+message SC_HuolongChangeUserInfoResponse{
+	option (msg_code) = 10101022;
 	int32 result = 1;	// 0: normal, others: error code
 	string message = 2;
 }
@@ -86,37 +88,37 @@ message ST_HuolongRoomInfo {
 	HuolongStatus status = 8;
 }
 
-message C2SM_HuolongCreateTableRequest{
-	option (msg_code) = 10101011;
+message CS_HuolongCreateTableRequest{
+	option (msg_code) = 10101101;
 	HuolongGameType type = 1;
 }
 
-message SM2C_HuolongCreateTableResponse {
-	option (msg_code) = 10102011;
+message SC_HuolongCreateTableResponse {
+	option (msg_code) = 10101102;
 	bool result = 1;
 	string message = 2;
 	ST_HuolongRoomInfo room_info = 3;
 }
 
-message C2SM_HuolongEnterTableRequest {
-	option (msg_code) = 10101012;
+message CS_HuolongEnterTableRequest {
+	option (msg_code) = 10101111;
 	int32 room_number = 1;
 }
 
-message SM2C_HuolongEnterTableResponse {
-	option (msg_code) = 10102012;
+message SC_HuolongEnterTableResponse {
+	option (msg_code) = 10101112;
 	bool result = 1;
 	string message = 2;
 	ST_HuolongRoomInfo room_info = 3;
 }
 
-message SM2C_HuolongNoticeRoomInfo {
-	option (msg_code) = 10101013;
+message SC_HuolongNoticeRoomInfo {
+	option (msg_code) = 10100001;
 	ST_HuolongRoomInfo room_info = 1;
 }
 
-message SM2C_HuolongNoticeGameStart {
-	option (msg_code) = 10101014;
+message SC_HuolongNoticeGameStart {
+	option (msg_code) = 10100002;
 
 }
 

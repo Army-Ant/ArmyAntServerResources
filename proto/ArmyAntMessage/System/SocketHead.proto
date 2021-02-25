@@ -4,6 +4,8 @@ package ArmyAntMessage.System;
 
 import "ArmyAntMessage/Common/base.proto";
 
+// appid : 0
+
 enum ConversationStepType {
 	Default = 0;
 	NoticeOnly = 1;
