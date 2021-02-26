@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ArmyAntMessage.SubApps;
+
+import "ArmyAntMessage/Common/base.proto";
+
+// appid : 1000
+
+
+// Gate 服务器要求踢用户下线
+message GS_GateKickOutRequest{
+	option (msg_code) = 10009001;
+	string uid = 1;		// 如不填， 则按照 auth 对应的账号登出， 可用于无 uid 的游客账号。
+	string auth = 2;	// 如不填， 则按照 uid 登出。 如 auth 与 uid 不符或全都不填， 则登出失败。
+}
+
+
+// 正常用户登出成功, 也可用于被动登出的通知
+// Gate 服务器不会主动断开正常用户的连接， 此协议仅用于通知用户已登出
+message SG_GateLogoutResponse{
+	option (msg_code) = 10009002;
+	string uid = 1;
+	repeated int32 server_id = 2;
+	int32 code = 3;
+	string message = 4;
+}
+
