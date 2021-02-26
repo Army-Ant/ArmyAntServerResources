@@ -7,16 +7,17 @@ import "ArmyAntMessage/Common/base.proto";
 // appid : 1000
 
 
-// 正常用户登录
+// 用户登录
 message CS_GateLoginRequest{
 	option (msg_code) = 10001001;
-	string uid = 1;
-	string pwd = 2;
-	int32 server_id = 3;
+	LoginType type = 1;
+	string uid = 2;		// 对于游客， 此处不填， 游客账户在 auth 失效后会被清除
+	string pwd = 3;
+	int32 server_id = 4;
 }
 
 
-// 正常用户登录成功
+// 用户登录成功
 message SC_GateLoginResponse{
 	option (msg_code) = 10001002;
 	string auth = 1;
@@ -27,7 +28,7 @@ message SC_GateLoginResponse{
 }
 
 
-// 正常用户登录失败
+// 用户登录失败
 message SC_GateLoginFailureResponse{
 	option (msg_code) = 10001003;
 	int32 code = 1;
@@ -35,7 +36,7 @@ message SC_GateLoginFailureResponse{
 }
 
 
-// 正常用户登出
+// 用户登出
 message CS_GateLogoutRequest{
 	option (msg_code) = 10001011;
 	string uid = 1;		// 如不填， 则按照 auth 对应的账号登出， 可用于无 uid 的游客账号。
@@ -44,7 +45,7 @@ message CS_GateLogoutRequest{
 }
 
 
-// 正常用户登出成功, 也可用于被动登出的通知
+// 用户登出成功, 也可用于被动登出的通知
 // Gate 服务器不会主动断开正常用户的连接， 此协议仅用于通知用户已登出
 message SC_GateLogoutResponse{
 	option (msg_code) = 10001012;
@@ -55,7 +56,7 @@ message SC_GateLogoutResponse{
 }
 
 
-// 正常用户主动登出失败
+// 用户主动登出失败
 message SC_GateLogoutFailureResponse{
 	option (msg_code) = 10001013;
 	int32 code = 1;
