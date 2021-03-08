@@ -11,7 +11,7 @@ import "ArmyAntMessage/Common/base.proto";
 message CS_GateLoginRequest{
 	option (msg_code) = 10001001;
 	LoginType type = 1;
-	string uid = 2;		// 对于游客， 此处不填， 游客账户在 auth 失效后会被清除
+	string uid = 2;		// 对于游客， 此处不填， 游客账户在 auth 失效后会被清除 
 	string pwd = 3;
 	int32 server_id = 4;
 }

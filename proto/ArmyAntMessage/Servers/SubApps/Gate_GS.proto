@@ -7,7 +7,7 @@ import "ArmyAntMessage/Common/base.proto";
 // appid : 1000
 
 
-// Gate 服务器要求踢用户下线
+// Gate 服务器要求应用服务器踢用户下线
 message GS_GateKickOutRequest{
 	option (msg_code) = 10009001;
 	string uid = 1;		// 如不填， 则按照 auth 对应的账号登出， 可用于无 uid 的游客账号。
@@ -15,9 +15,8 @@ message GS_GateKickOutRequest{
 }
 
 
-// 正常用户登出成功, 也可用于被动登出的通知
-// Gate 服务器不会主动断开正常用户的连接， 此协议仅用于通知用户已登出
-message SG_GateLogoutResponse{
+// 应用服务器用户下线告知 Gate
+message SG_GateKickOutResponse{
 	option (msg_code) = 10009002;
 	string uid = 1;
 	repeated int32 server_id = 2;
@@ -25,3 +24,27 @@ message SG_GateLogoutResponse{
 	string message = 4;
 }
 
+
+// Gate 服务器向 DataBase 服务器查询用户信息数据, 以确定用户是否存在, 以及密码是否正确
+message GD_UserAccountRequest{
+	option (msg_code) = 10009011;
+	string uid = 1;		// 要查询的用户, 必填字段
+	string pwd = 2;		// 要查询的用户密码, 有密码必填, 游客账号或第三方账号不填. 必须密码正确才能成功查到结果.
+}
+
+
+// DataBase 服务器对 Gate 服务器返回用户信息数据
+message DG_UserAccountResponse{
+	option (msg_code) = 10009012;
+	string uid = 1;
+
+}
+
+
+// DataBase 服务器告知 Gate 服务器查询用户数据失败
+message DG_UserAccountFailed{
+	option (msg_code) = 10009013;
+	string uid = 1;
+	int32 code = 2;
+	string message = 3;
+}
